@@ -1,54 +1,46 @@
 <?php defined('APP'); include "views/template.php"; ?>
 
-  
-  
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f5f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      width: 300px;
-    }
-    input {
-      width: 100%;
-      padding: 0.6rem;
-      margin-top: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    button {
-      margin-top: 1.5rem;
-      width: 100%;
-      padding: 0.6rem;
-      background: black;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-  </style>
-  <div class="container">
-  <?php if (isset($_SESSION['msg'])): ?>
-    <div class="msg <?= $_SESSION['status'] ?? '' ?>">
-      <?= $_SESSION['msg'] ?>
-      <?php unset($_SESSION['msg'], $_SESSION['status']); ?>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card p-4">
+        <div class="card-body">
+          <h2 class="text-center mb-4 fw-bold">Login</h2>
+          
+          <form action="?option=Login&task=login" method="POST">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-envelope"></i>
+                </span>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              <i class="bi bi-box-arrow-in-right me-2"></i>
+              Login
+            </button>
+          </form>
+          
+          <div class="mt-4 text-center">
+            <p class="mb-0">Don't have an account? 
+              <a href="?option=register" class="text-primary text-decoration-none">Register here</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  <?php endif; ?>
-
-    <h2>Login</h2>
-    <form action="?option=Login&task=login" method="POST">
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit">Entra</button>
-    </form>
   </div>
+</div>

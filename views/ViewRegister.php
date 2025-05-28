@@ -1,84 +1,66 @@
-
 <?php defined('APP'); require "views/template.php"; ?>
 
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f5f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      width: 320px;
-      box-sizing: border-box;
-    }
-    input {
-      width: 100%;
-      padding: 0.6rem;
-      margin-top: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-sizing: border-box;
-      font-size: 1rem;
-    }
-    button {
-      margin-top: 1.5rem;
-      width: 100%;
-      padding: 0.7rem;
-      background: black;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background: #333;
-    }
-    .msg {
-      padding: 0.7rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      text-align: center;
-    }
-    .success {
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-    }
-    .danger {
-      background-color: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-    }
-  </style>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card p-4">
+        <div class="card-body">
+          <h2 class="text-center mb-4 fw-bold">Register</h2>
+          
+          <form action="?option=register&task=registerUser" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-person"></i>
+                </span>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+            </div>
 
-  <div class="container">
-    <h2>Registrati</h2>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-envelope"></i>
+                </span>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+            </div>
 
-    <?php if (isset($_SESSION['msg'])): ?>
-      <div class="msg <?php echo $_SESSION['status'] ?? ''; ?>">
-        <?php 
-          echo $_SESSION['msg']; 
-          unset($_SESSION['msg'], $_SESSION['status']);
-        ?>
+            <div class="mb-4">
+              <label for="password_confirm" class="form-label">Confirm Password</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="bi bi-lock-fill"></i>
+                </span>
+                <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              <i class="bi bi-person-plus me-2"></i>
+              Register
+            </button>
+          </form>
+          
+          <div class="mt-4 text-center">
+            <p class="mb-0">Already have an account? 
+              <a href="?option=login" class="text-primary text-decoration-none">Login here</a>
+            </p>
+          </div>
+        </div>
       </div>
-    <?php endif; ?>
-
-    <form action="?option=register&task=registerUser" method="POST">
-      <input type="text" name="name" placeholder="Nome completo" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <input type="password" name="password_confirm" placeholder="Conferma Password" required />
-      <button type="submit">Registrati</button>
-    </form>
+    </div>
   </div>
+</div>
