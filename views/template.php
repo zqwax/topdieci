@@ -3,25 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top Dieci</title>
+  <title>F1 Top Teams</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <style>
+    :root {
+      --f1-red: #e10600;
+      --f1-dark: #15151e;
+      --f1-grey: #38383f;
+      --f1-light: #f8f9fa;
+    }
+
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #f8f9fa;
+      font-family: 'Titillium Web', sans-serif;
+      background-color: var(--f1-dark);
+      color: var(--f1-light);
     }
 
     .navbar {
-      background: linear-gradient(135deg, #0d6efd, #0043a8);
+      background-color: var(--f1-grey);
       padding: 1rem 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-bottom: 3px solid var(--f1-red);
     }
 
     .navbar-brand {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: white !important;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .nav-link {
@@ -30,26 +40,27 @@
       transition: all 0.3s ease;
       margin: 0 0.5rem;
       padding: 0.5rem 1rem !important;
-      border-radius: 6px;
+      border-radius: 4px;
     }
 
     .nav-link:hover {
-      background: rgba(255,255,255,0.1);
+      background: var(--f1-red);
       color: white !important;
     }
 
     .btn-auth {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
+      background: var(--f1-red);
+      border: none;
       color: white !important;
       padding: 0.5rem 1.25rem;
-      border-radius: 6px;
+      border-radius: 4px;
       transition: all 0.3s ease;
+      text-decoration: none;
     }
 
     .btn-auth:hover {
-      background: rgba(255,255,255,0.25);
-      border-color: rgba(255,255,255,0.4);
+      background: #ff1a1a;
+      transform: translateY(-2px);
     }
 
     .container {
@@ -59,33 +70,34 @@
     }
 
     .card {
+      background: var(--f1-grey);
       border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      margin-bottom: 2rem;
+      overflow: hidden;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
 
     .alert {
       border: none;
-      border-radius: 10px;
+      border-radius: 6px;
       padding: 1rem 1.5rem;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .alert-success {
-      background: #d1fae5;
-      color: #065f46;
+      background: #155724;
+      color: white;
     }
 
     .alert-danger {
-      background: #fee2e2;
-      color: #991b1b;
+      background: var(--f1-red);
+      color: white;
     }
 
     .user-welcome {
@@ -93,12 +105,36 @@
       margin-right: 1rem;
       font-weight: 500;
     }
+
+    .team-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .vote-count {
+      color: var(--f1-red);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .btn-vote {
+      background: var(--f1-red);
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-vote:hover {
+      background: #ff1a1a;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="?option=home">Top Dieci</a>
+      <a class="navbar-brand" href="?option=home">F1 Teams</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
